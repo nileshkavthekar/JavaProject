@@ -6,22 +6,24 @@ public class DrawComponents {
 	
 	public  void drawCanvas(Canvas canvas)
 	{
-		canvasDetails=new String[canvas.getWidth()][canvas.getHeight()];	
+		canvasDetails=new String[canvas.getHeight()][canvas.getWidth()];	
 
-		for(int row=0;row<canvas.getWidth();row++){
+		for(int row=0;row<canvas.getHeight();row++){
 			
-			for(int col=0;col<canvas.getHeight();col++){
+			for(int col=0;col<canvas.getWidth();col++){
 				canvasDetails[row][col]="0";
 			}
 		}
 		
 	}
 
+	//L 1 2 6 2
+	//L 6 3 6 4
 	public void drawLine(Line line)
 	{
-		for(int col=line.getPointX1();col<=line.getPointX2();col++){
+		for(int row=line.getPointX1()-1;row<line.getPointX2();row++){
 			
-			for(int row=line.getPointY1();row<=line.getPointY2();row++){
+			for(int col=line.getPointY1()-1;col<line.getPointY2();col++){
 				canvasDetails[col][row]="x";
 			}
 		}
@@ -45,5 +47,16 @@ public class DrawComponents {
 			System.out.println();
 		}		
 		
+	}
+	
+
+	public void drawRectangle(Line line)
+	{
+		for(int row=line.getPointX1()-1;row<line.getPointX2();row++){
+			
+			for(int col=line.getPointY1()-1;col<line.getPointY2();col++){
+				canvasDetails[col][row]="x";
+			}
+		}
 	}
 }
